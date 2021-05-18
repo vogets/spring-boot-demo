@@ -41,15 +41,6 @@ pipeline {
       } 
     }
 
-    stage('Anchore analyse') {
-      tools {
-                   jdk "JDK8"
-                }
-      steps {
-        writeFile file: 'anchore_images', text: 'docker.io/vogetisameer12/spring-boot-demo'
-        anchore name: 'anchore_images'
-      }
-    }
 
     stage('Deploy to K8s') {
       tools {
