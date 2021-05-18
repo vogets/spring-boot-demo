@@ -26,31 +26,7 @@ pipeline {
       }
     }
 
-    stage ('OWASP Dependency-Check Vulnerabilities') {
-      tools {
-                   jdk "JDK8"
-                }
-      steps {
-        withMaven(maven : 'maven') {
-          sh 'mvn dependency-check:check'
-        }
-
-        dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-      }
-    }
-
-    stage('SonarQube analysis') {
-      tools {
-                   jdk "JDK8"
-                }
-      steps {
-        withSonarQubeEnv(credentialsId: 'sonarqube-secret', installationName: 'sonarqube-server') {
-          withMaven(maven : 'maven') {
-            sh 'mvn sonar:sonar -Dsonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json -Dsonar.dependencyCheck.xmlReportPath=target/dependency-check-report.xml -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html'
-          }
-        }
-      }
-    }
+    
 
     stage('Create and push container') {
       tools {
@@ -70,7 +46,7 @@ pipeline {
                    jdk "JDK8"
                 }
       steps {
-        writeFile file: 'anchore_images', text: 'docker.io/maartensmeets/spring-boot-demo'
+        writeFile file: 'anchore_images', text: 'docker.io/vogetisameer12/spring-boot-demo'
         anchore name: 'anchore_images'
       }
     }
