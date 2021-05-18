@@ -12,6 +12,11 @@ pipeline {
                    jdk "JDK8"
                 }
       steps {
+         sh '''
+              echo "PATH = ${PATH}"
+              echo "M2_HOME = ${M2_HOME}"
+              echo "JAVA_HOME = ${JAVA_HOME}"
+            '''
         sh 'java -version'
         sh 'javac -version'
         withMaven(maven : 'maven') {
