@@ -9,6 +9,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh 'java -version'
+        sh 'javac -version'
         withMaven(maven : 'maven') {
           sh "mvn package"
         }
