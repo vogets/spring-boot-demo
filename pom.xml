@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -127,7 +127,7 @@
                         </ports>
                     </container>
                     <from>
-                        <image>openjdk:11-jdk-slim</image>
+                        <image>openjdk:8-jdk-slim</image>
                     </from>
                 </configuration>
             </plugin>
