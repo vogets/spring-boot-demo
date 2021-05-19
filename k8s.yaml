@@ -2,11 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
+  namespace: springboot
   labels:
     app: spring-boot-demo
   name: spring-boot-demo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: spring-boot-demo
@@ -27,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   creationTimestamp: null
+  namespace: springboot
   labels:
     app: spring-boot-demo
   name: spring-boot-demo
@@ -46,6 +48,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: spring-boot-demo
+  namespace: springboot
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: \"false\"
 spec:
