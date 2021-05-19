@@ -18,6 +18,7 @@ spec:
       labels:
         app: spring-boot-demo
     spec:
+      serviceAccountName: jenkins-robot
       containers:
       - image: docker.io/vogetisameer12/spring-boot-demo
         name: spring-boot-demo
